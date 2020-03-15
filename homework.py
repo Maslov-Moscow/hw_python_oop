@@ -12,18 +12,18 @@ class Calculator:
 
     def get_today_stats(self):
         stats = 0
-        for x in self.records:
-            if x.date == dt.date.today():
-                stats = stats + x.amount
+        for day in self.records:
+            if day.date == dt.date.today():
+                stats = stats + day.amount
         return stats
 
     def get_week_stats(self):
         week_stat = 0
         time_range = dt.timedelta(days=7)
         str_week = dt.date.today() - time_range
-        for x in self.records:
-            if x.date >= str_week:
-                week_stat = week_stat + x.amount
+        for day in self.records:
+            if day.date >= str_week:
+                week_stat = week_stat + day.amount
         return week_stat
 
 
@@ -37,7 +37,7 @@ class Record:
 
         else:
             self.date = dt.datetime.strptime(date, '%d.%m.%Y').date()
-        self.a = {"amount": self.amount, "date": self.date, "comment": self.comment}
+
 
 
 class CaloriesCalculator(Calculator):
